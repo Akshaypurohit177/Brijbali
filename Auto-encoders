@@ -1,0 +1,16 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.datasets import make_blobs
+
+data=make_blobs(n_samples=300,n_features=2,centers=2,cluster_std=0.1,random_state=101)
+
+X,y=data
+
+np.random.seed(101)
+z_noise=np.random.normal(size=len(X))
+z_noise=pd.Series(z_noise)
+
+feat=pd.DataFrame(X)
+pd.concat([feat,z_noise],axis=1)
+feat.columns=['X1','X2','X3']
